@@ -15,7 +15,8 @@ Host atis
 
 ### Specifying a printer
 You can specify a specific printer by typing `atis PATH_TO_FILE PRINTER_NAME`. If you don't do this, the `defaultPrinter` will be used.
-Valid values for `PRINTER_NAME` are: `pool-sw1`, `pool-sw2`, `pool-sw3` and `pool-farb1`.
+In theory, valid values for `PRINTER_NAME` are: `pool-sw1`, `pool-sw2`, `pool-sw3` and `pool-farb1`. However, I found that only `pool-sw3` works reliably.
 You can also omit the `pool-`-Part, e.g. `atis skript.pdf sw1`.
+
 
 Thanks to the ATIS people for [this docu](https://www.atis.informatik.kit.edu/1323.php).
