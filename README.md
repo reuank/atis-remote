@@ -1,4 +1,4 @@
-This function allows you to print stuff remotely on the ATIS printer of the KIT using your account.
+Just type `atis PATH_TO_FILE` to print stuff remotely on a ATIS printer of the KIT using SSH.
 
 ## Steps to use the function:
 1. Generate a SSH key on the device you want to print stuff from (e.g. `ssh-keygen -t ed25519 -o -a 100`)
@@ -12,3 +12,6 @@ Host atis
 4. Connect to your ATIS account again (`ssh atis`) and make sure that you don't need to enter your password again
 5. Add `source PATH_TO_THIS_REPO/.atis` to your `~/.bashrc` or `~/.zshrc` to activate the function
 6. You should now be able to print files by typing `atis PATH_TO_FILE`
+
+
+Thanks to the ATIS people for [this docu](https://www.atis.informatik.kit.edu/1323.php).
