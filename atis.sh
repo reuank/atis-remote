@@ -9,14 +9,14 @@ atis(){
   # Move file to atis account
   scp $1 atis:Schreibtisch
 
-  # Print file
+  # Print file on printer pool-sw3
   file=$(basename $1)
-  ssh atis "lpr -P pool-sw3 Schreibtisch/$file"
+  ssh atis "lpr -P pool-sw$printer Schreibtisch/$file"
 
-  if [ $? == 0 ]
+  if [ $? -ne 0 ]
   then
-    echo "Printed file $file successfully on printer sw3."
-  else
     echo "Printing failed."
+  else
+    echo "Printed file $file successfully on printer sw3."
   fi
 }
