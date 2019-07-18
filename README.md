@@ -13,5 +13,9 @@ Host atis
 5. Add `source PATH_TO_THIS_REPO/.atis` to your `~/.bashrc` or `~/.zshrc` to activate the function
 6. You should now be able to print files by typing `atis PATH_TO_FILE`
 
+### Specifying a printer
+You can specify a specific printer by typing `atis PATH_TO_FILE PRINTER_NAME`. If you don't do this, the `defaultPrinter` will be used.
+Valid values for `PRINTER_NAME` are: `pool-sw1`, `pool-sw2`, `pool-sw3` and `pool-farb1`.
+You can also omit the `pool-`-Part, e.g. `atis skript.pdf sw1`.
 
 Thanks to the ATIS people for [this docu](https://www.atis.informatik.kit.edu/1323.php).
