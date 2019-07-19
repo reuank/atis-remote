@@ -14,7 +14,8 @@ Host atis
 6. You should now be able to print files by typing `atis PATH_TO_FILE`.
 7. On your host, add `source PATH_TO_THIS_REPO/atis.sh` to your `~/.bashrc` or `~/.zshrc` to keep the function activated in future shell sessions.
 
-### Specifying a printer
+
+## Specifying a printer
 You can additionally specify a specific printer by typing `atis PATH_TO_FILE PRINTER_NAME`.
 
 In theory, valid values for `PRINTER_NAME` are: 
@@ -25,7 +26,8 @@ In theory, valid values for `PRINTER_NAME` are:
 
 However, I found that only `pool-sw3` and `pool-farb1` work reliably. Hence, I set `pool-sw3` as the default printer.
 
-### Specifying a printing mode
+
+## Specifying a printing mode
 You can additionally specify a print mode by typing `atis PATH_TO_FILE PRINTER_NAME PRINT_MODE`.
 
 Valid values for `PRINT_MODE` are:
@@ -34,5 +36,6 @@ Valid values for `PRINT_MODE` are:
 - `two-sided-short-edge`
 
 The default print mode is `two-sided-long-edge` (or `duplex`).
+
 
 Thanks to the ATIS people for [this docu](https://www.atis.informatik.kit.edu/1323.php).
