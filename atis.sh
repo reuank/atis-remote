@@ -3,7 +3,8 @@
 atis(){
   hostname="atis"
   remotePath="Schreibtisch"
-  defaultPrinter="pool-sw3"
+  printer="pool-sw3"
+  mode="two-sided-long-edge" # Standard Duplex
 
   # Check if file specified
   if [ -z "${1}" ]
@@ -13,18 +14,30 @@ atis(){
   fi
 
   # Check if correct printer specified
-  if [ -z "${2}" ]
+  if [ -n "${2}" ]
   then
-    printer=$defaultPrinter
-  else
     case $2 in
       pool-sw1|pool-sw2|pool-sw3|pool-farb1) 
         printer=$2;;
       sw1|sw2|sw3|farb1) 
         printer=pool-$2;;
       *) 
-        printer=$defaultPrinter
-        echo "=> Invalid printer. Printing on default-printer '$defaultPrinter'";;
+        echo "=> Invalid printer. Printing on default printer '$printer'";;
+    esac
+  fi
+
+  # Check if print mode is specified
+  if [ -n "${3}" ]
+  then
+    case $3 in
+      one-sided|two-sided-long-edge|two-sided-short-edge) 
+        mode=$3;;
+      duplex) 
+        ;; # already default
+      simplex)
+        mode=one-sided;;
+      *) 
+        echo "=> Invalid print mode. Printing with default print mode '$mode'";;
     esac
   fi
 
@@ -32,11 +45,11 @@ atis(){
   scp "$1" $hostname:$remotePath
 
   # Print file on printer pool-sw3
-  file=$( basename "$1" )
-
-  if ssh $hostname "lpr -P $printer $remotePath/$file"
+  filename=$( basename "$1" )
+  
+  if ssh $hostname "lpr -P $printer -o sides=$mode $remotePath/$filename"
   then
-    echo "=> Printed file '$file' successfully on printer '$printer'."
+    echo "=> Printed file '$filename' successfully on printer '$printer' with print mode '$mode'."
   else
     echo "=> Printing failed."
   fi
