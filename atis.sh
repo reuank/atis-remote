@@ -10,7 +10,7 @@ atis(){
   if [ -z "${1}" ]
   then
     echo "=> No file name specified. Aborting." > /dev/stderr
-    return
+    return 1
   fi
 
   # Check if correct printer specified
@@ -52,5 +52,6 @@ atis(){
     echo "=> Printed file '$filename' successfully on printer '$printer' with print mode '$mode'."
   else
     echo "=> Printing failed." > /dev/stderr
+    return 1
   fi
 }
