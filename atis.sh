@@ -9,7 +9,7 @@ atis(){
   # Check if file specified
   if [ -z "${1}" ]
   then
-    echo "=> No file name specified. Aborting." > /dev/stderr
+    echo "=> No file name specified. Aborting." 1>&2
     return 1
   fi
 
@@ -22,7 +22,7 @@ atis(){
       sw1|sw2|sw3|farb1) 
         printer=pool-$2;;
       *) 
-        echo "=> Invalid printer. Printing on default printer '$printer'" > /dev/stderr;;
+        echo "=> Invalid printer. Printing on default printer '$printer'" 1>&2;;
     esac
   fi
 
@@ -37,7 +37,7 @@ atis(){
       simplex)
         mode=one-sided;;
       *) 
-        echo "=> Invalid print mode. Printing with default print mode '$mode'" > /dev/stderr;;
+        echo "=> Invalid print mode. Printing with default print mode '$mode'" 1>&2;;
     esac
   fi
 
@@ -51,7 +51,7 @@ atis(){
   then
     echo "=> Printed file '$filename' successfully on printer '$printer' with print mode '$mode'."
   else
-    echo "=> Printing failed." > /dev/stderr
+    echo "=> Printing failed." 1>&2
     return 1
   fi
 }
